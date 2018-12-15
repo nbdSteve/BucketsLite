@@ -1,0 +1,8 @@
+com\nbdsteve\vbuckets\file\providedfile\GenerateProvidedFile.class
+com\nbdsteve\vbuckets\command\BucketCommand.class
+com\nbdsteve\vbuckets\event\InteractEvent$1.class
+com\nbdsteve\vbuckets\gui\BucketGui.class
+com\nbdsteve\vbuckets\file\LoadProvidedFiles$Files.class
+com\nbdsteve\vbuckets\file\LoadProvidedFiles.class
+com\nbdsteve\vbuckets\vBuckets.class
+com\nbdsteve\vbuckets\event\InteractEvent.class

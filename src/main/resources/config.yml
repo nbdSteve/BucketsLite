@@ -1,0 +1,26 @@
+#
+# vBuckets config.yml v1.0-BETA
+# Developed by nbdSteve
+#
+# Plugin Support Discord: https://discord.gg/j6Yj5B8
+# Read My TOS Here: https://goo.gl/mtSuZo
+# Copyright Owner: nbdSteve
+#
+# These are values for the GUI that will be opened with the /vb command.
+gui:
+  #
+  # The name of the GUI.
+  name: "&b&lv&f&lBuckets"
+  #
+  # The size of the GUI (this must be a multiple of 9).
+  size: 27
+  #
+  # The item that will fill the GUI besides the TrenchTools.
+  # Use this format: ITEM_NAME-DATA_VALUE
+  fill-item: stained_glass_pane-15
+  #
+  # The amount of the fill item that is displayed.
+  fill-item-amount: 1
+  #
+  # If the fill item will appear enchanted in the GUI.
+  fill-item-glowing: true

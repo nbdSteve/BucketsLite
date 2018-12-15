@@ -1,0 +1,11 @@
+name: vBuckets
+version: ${project.version}
+main: com.nbdsteve.vbuckets.vBuckets
+api-version: 1.13
+commands:
+  vb:
+    usage: /<command>
+    description: Type '/vb help' for command help.
+  gen:
+    usage: /<command>
+    description: Type '/gen help' for command help.

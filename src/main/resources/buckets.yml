@@ -1,0 +1,18 @@
+
+bucket-1:
+  type: cobblestone
+  direction: vertical
+  item: bucket
+  name: "&7&lCOBBLE VERTICAL GEN BUCKET"
+  unique: "&7&oCobblestone Vertical Gen Bucket"
+  glowing: true
+  price-per-use: 100
+  lore:
+  - "&7 "
+  - "&7&oCobblestone Vertical Gen Bucket"
+  - "&7 "
+  - "&bThis bucket will generate from"
+  - "&bthe top down &f&o(place at 256)"
+  - "&7 "
+  - "&ePrice / Use = &c&l$100"
+
