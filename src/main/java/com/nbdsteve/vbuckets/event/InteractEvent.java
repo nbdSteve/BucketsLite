@@ -12,6 +12,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 
@@ -51,16 +52,19 @@ public class InteractEvent implements Listener {
                     if (econ.getBalance(p) >= price) {
                         int x = e.getClickedBlock().getX();
                         int z = e.getClickedBlock().getZ();
-                        int y = 255;
-                        while (p.getWorld().getBlockAt(x, y, z).getType().equals(Material.AIR) && y > 0) {
-                            p.getWorld().getBlockAt(x, y, z).setType(Material.valueOf(lpf.getBuckets().getString(bucketType + ".type").toUpperCase()));
-                            y--;
-                            pl.getServer().getScheduler().scheduleSyncDelayedTask(pl, new Runnable() {
-                                @Override
-                                public void run() {
-
-                                }
-                            }, 20L);
+                        if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase("vertical")) {
+                            int y = lpf.getConfig().getInt("gen-start-height");
+                            while (p.getWorld().getBlockAt(x, y, z).getType().equals(Material.AIR) && y > 0) {
+                                p.getWorld().getBlockAt(x, y, z).setType(Material.valueOf(lpf.getBuckets().getString(bucketType + ".type").toUpperCase()));
+                                y--;
+                            }
+                        } else if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase("horizontal")) {
+                            int y = e.getClickedBlock().getY();
+                            int end = x + 64;
+                            while (p.getWorld().getBlockAt(end, y, z).getType().equals(Material.AIR) && end > x) {
+                                p.getWorld().getBlockAt(end, y, z).setType(Material.valueOf(lpf.getBuckets().getString(bucketType + ".type").toUpperCase()));
+                                end--;
+                            }
                         }
                     }
                 }
