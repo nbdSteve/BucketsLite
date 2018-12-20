@@ -3,22 +3,26 @@ bucket-1:
   type: cobblestone
   direction: horizontal
   item: bucket
-  name: "&7&lCOBBLE VERTICAL GEN BUCKET"
-  unique: "&7&oCobblestone Vertical Gen Bucket"
+  horizontal-gen-length: 32
+  name: "&7&lCOBBLE GEN BUCKET"
+  unique: "&7&oHorizontal Cobblestone Gen Bucket"
   glowing: true
-  price-per-use: 100
+  price-per-use: 50
   lore:
   - "&7 "
-  - "&7&oCobblestone Vertical Gen Bucket"
+  - "&7&oHorizontal Cobblestone Gen Bucket"
   - "&7 "
-  - "&bThis bucket will generate from"
-  - "&bthe top down &f&o(place at 256)"
+  - "&7&lDIRECTION: &4&lHORIZONTAL"
   - "&7 "
-  - "&ePrice / Use = &c&l$100"
+  - "&bThis bucket will 32 blocks"
+  - "&btowards the &3&lEAST"
+  - "&7 "
+  - "&ePrice / Use = &c&l$50"
 
 bucket-2:
   type: obsidian
   direction: vertical
+  generation-start-height: 255
   item: bucket
   name: "&5&lOBSIDIAN VERTICAL GEN BUCKET"
   unique: "&d&oObsidian Vertical Gen Bucket"

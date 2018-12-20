@@ -5,6 +5,7 @@ import com.nbdsteve.vbuckets.vBuckets;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,8 +13,8 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InteractEvent implements Listener {
@@ -23,6 +24,8 @@ public class InteractEvent implements Listener {
     private LoadProvidedFiles lpf = ((vBuckets) pl).getFiles();
     //Get the server economy
     private Economy econ = vBuckets.getEconomy();
+
+    private int taskid;
 
     @EventHandler
     public void onClick(PlayerInteractEvent e) {
@@ -48,27 +51,68 @@ public class InteractEvent implements Listener {
                     if (bucketType == null) {
                         return;
                     }
+                    //Store the price for the gen bucket
                     double price = lpf.getBuckets().getDouble(bucketType + ".price-per-use");
                     if (econ.getBalance(p) >= price) {
+                        //Store the blocks that are going to be changed by the gen bucket
+                        ArrayList<Block> blocks = new ArrayList<>();
+                        //Store the bucket type as a final variable
+                        final String bt = bucketType;
+                        //Store the initial blocks coordinates
                         int x = e.getClickedBlock().getX();
                         int z = e.getClickedBlock().getZ();
+                        //Code for the vertical bucket
                         if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase("vertical")) {
-                            int y = lpf.getConfig().getInt("gen-start-height");
+                            //Start the generation from this height
+                            int y = lpf.getBuckets().getInt(bucketType + ".generation-start-height");
+                            //While the block being replaced is air, add these blocks to be changed
                             while (p.getWorld().getBlockAt(x, y, z).getType().equals(Material.AIR) && y > 0) {
-                                p.getWorld().getBlockAt(x, y, z).setType(Material.valueOf(lpf.getBuckets().getString(bucketType + ".type").toUpperCase()));
+                                blocks.add(p.getWorld().getBlockAt(x, y, z));
                                 y--;
                             }
                         } else if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase("horizontal")) {
+                            //Store the coordinates for the starting block
                             int y = e.getClickedBlock().getY();
-                            int end = x + 64;
-                            while (p.getWorld().getBlockAt(end, y, z).getType().equals(Material.AIR) && end > x) {
-                                p.getWorld().getBlockAt(end, y, z).setType(Material.valueOf(lpf.getBuckets().getString(bucketType + ".type").toUpperCase()));
-                                end--;
+                            int end = x + (lpf.getBuckets().getInt(bucketType + ".horizontal-gen-length"));
+                            int start = x + 1;
+                            //Check that the block being replaced is air
+                            while (p.getWorld().getBlockAt(start, y, z).getType().equals(Material.AIR) && start < end) {
+                                //Get the current location in the gen buckets generation and set that block to the desired type
+                                blocks.add(p.getWorld().getBlockAt(start, y, z));
+                                start++;
                             }
+                        }
+                        //Runnable to do the block generation
+                        this.taskid = pl.getServer().getScheduler().scheduleSyncRepeatingTask(pl, new Runnable() {
+                            int index = 0;
+                            @Override
+                            public void run() {
+                                if (index < blocks.size()) {
+                                    //If the block isn't air then stop generating, do this check twice
+                                    if (!blocks.get(index).getType().equals(Material.AIR)) {
+                                        stopTask();
+                                    }
+                                    blocks.get(index).setType(Material.valueOf(lpf.getBuckets().getString(bt + ".type").toUpperCase()));
+                                    index++;
+                                } else {
+                                    stopTask();
+                                }
+                            }
+                        }, 0L, lpf.getConfig().getInt("delay"));
+                        //Withdraw the money from the players account
+                        if (blocks.size() <= 0) {
+                            for (String line : lpf.getMessages().getStringList("bucket-use")) {
+                                p.sendMessage(ChatColor.translateAlternateColorCodes('&', line).replace("%price%", String.valueOf(price)));
+                            }
+                            econ.withdrawPlayer(p, price);
                         }
                     }
                 }
             }
         }
+    }
+
+    private void stopTask() {
+        pl.getServer().getScheduler().cancelTask(taskid);
     }
 }
