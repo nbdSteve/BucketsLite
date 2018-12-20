@@ -51,16 +51,17 @@ public class BucketGui {
             i.setItem(z, f1);
         }
         //Add all of the buckets to the inventory
-        for (int x = 1; x < 27; x++) {
-            String bucket = "bucket-" + String.valueOf(x) + "-gui";
-            if (lpf.getBuckets().getBoolean(bucket + ".enabled")) {
+        for (int x = 1; x <= 54; x++) {
+            String bucket = "bucket-" + String.valueOf(x);
+            if (lpf.getBuckets().getBoolean(bucket + ".in-gui")) {
                 //Create the bucket
                 ItemStack vBucket = new ItemStack(
-                        Material.valueOf(lpf.getBuckets().getString(bucket + ".gui-item").toUpperCase()), 1);
+                        Material.valueOf(lpf.getBuckets().getString(bucket + ".item").toUpperCase()), 1);
                 ItemMeta vBucketMeta = vBucket.getItemMeta();
                 List<String> vBucketLore = new ArrayList<String>();
                 vBucketMeta.setDisplayName(
-                        ChatColor.translateAlternateColorCodes('&', lpf.getBuckets().getString(bucket + ".name")));
+                        ChatColor.translateAlternateColorCodes('&', lpf.getBuckets().getString(bucket +
+                                ".name")));
                 for (String lore : lpf.getBuckets().getStringList(bucket + ".lore")) {
                     vBucketLore.add(ChatColor.translateAlternateColorCodes('&', lore));
                 }

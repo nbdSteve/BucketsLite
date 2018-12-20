@@ -7,7 +7,7 @@
 # Copyright Owner: nbdSteve
 #
 # The delay between each block placement (in ticks).
-delay: 10
+delay: 2
 #
 # These are values for the GUI that will be opened with the /vb command.
 gui:
@@ -27,3 +27,7 @@ gui:
   #
   # If the fill item will appear enchanted in the GUI.
   fill-item-glowing: true
+  #
+  # The amount of time (in seconds) the player will have to wait before they can
+  # get another bucket from the GUI.
+  cooldown-per-bucket: 10

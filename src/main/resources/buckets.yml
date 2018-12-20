@@ -1,16 +1,23 @@
-
+#
+# vBucket buckets.yml v1.0-BETA
+# 54 buckets supported
+#
+# Bucket 1 (Example horizontal gen bucket).
+# All of this is required to make a horizontal gen bucket, simply duplicate
+# this and fill it in with the variables that you would like to make your own
+# horizontal gen bucket
 bucket-1:
   type: cobblestone
   direction: horizontal
-  item: bucket
+  item: water_bucket
   horizontal-gen-length: 32
   name: "&7&lCOBBLE GEN BUCKET"
-  unique: "&7&oHorizontal Cobblestone Gen Bucket"
+  unique: "&f&oHorizontal Cobblestone Gen Bucket"
   glowing: true
   price-per-use: 50
   lore:
   - "&7 "
-  - "&7&oHorizontal Cobblestone Gen Bucket"
+  - "&f&oHorizontal Cobblestone Gen Bucket"
   - "&7 "
   - "&7&lDIRECTION: &4&lHORIZONTAL"
   - "&7 "
@@ -18,7 +25,15 @@ bucket-1:
   - "&btowards the &3&lEAST"
   - "&7 "
   - "&ePrice / Use = &c&l$50"
+  #
+  in-gui: true
+  gui-slot: 10
+#
 
+# Bucket 2 (Example vertical gen bucket).
+# All of this is required to make a vertical gen bucket, simply duplicate
+# this and fill it in with the variables that you would like to make your own
+# vertical gen bucket
 bucket-2:
   type: obsidian
   direction: vertical
@@ -32,8 +47,113 @@ bucket-2:
   - "&7 "
   - "&d&oObsidian Vertical Gen Bucket"
   - "&7 "
+  - "&7&lDIRECTION: &4&lVERTICAL"
+  - "&7 "
   - "&bThis bucket will generate from"
-  - "&bthe top down &f&o(place at 256)"
+  - "&bthe top down &f&o(starting at 255)"
   - "&7 "
   - "&ePrice / Use = &c&l$5000"
+  #
+  in-gui: true
+  gui-slot: 14
+#
 
+#
+bucket-3:
+  type: obsidian
+  direction: horizontal
+  item: lava_bucket
+  horizontal-gen-length: 24
+  name: "&5&lOBSIDIAN GEN BUCKET"
+  unique: "&d&oHorizontal Obsidian Gen Bucket"
+  glowing: true
+  price-per-use: 1500
+  lore:
+  - "&7 "
+  - "&d&oHorizontal Obsidian Gen Bucket"
+  - "&7 "
+  - "&7&lDIRECTION: &4&lHORIZONTAL"
+  - "&7 "
+  - "&bThis bucket will 24 blocks"
+  - "&btowards the &3&lEAST"
+  - "&7 "
+  - "&ePrice / Use = &c&l$1500"
+  #
+  in-gui: true
+  gui-slot: 11
+#
+
+#
+bucket-4:
+  type: dirt
+  direction: horizontal
+  item: bucket
+  horizontal-gen-length: 64
+  name: "&8&lDIRT GEN BUCKET"
+  unique: "&7&oHorizontal Dirt Gen Bucket"
+  glowing: true
+  price-per-use: 64
+  lore:
+  - "&7 "
+  - "&7&oHorizontal Dirt Gen Bucket"
+  - "&7 "
+  - "&7&lDIRECTION: &4&lHORIZONTAL"
+  - "&7 "
+  - "&bThis bucket will 64 blocks"
+  - "&btowards the &3&lEAST"
+  - "&7 "
+  - "&ePrice / Use = &c&l$64"
+  #
+  in-gui: true
+  gui-slot: 12
+#
+
+#
+bucket-5:
+  type: cobblestone
+  direction: vertical
+  generation-start-height: 255
+  item: bucket
+  name: "&7&lCOBBLE VERTICAL GEN BUCKET"
+  unique: "&f&oCobblestone Vertical Gen Bucket"
+  glowing: true
+  price-per-use: 300
+  lore:
+  - "&7 "
+  - "&f&oCobblestone Vertical Gen Bucket"
+  - "&7 "
+  - "&7&lDIRECTION: &4&lVERTICAL"
+  - "&7 "
+  - "&bThis bucket will generate from"
+  - "&bthe top down &f&o(starting at 255)"
+  - "&7 "
+  - "&ePrice / Use = &c&l$300"
+  #
+  in-gui: true
+  gui-slot: 15
+#
+
+#
+bucket-6:
+  type: sand
+  direction: vertical
+  generation-start-height: 255
+  item: bucket
+  name: "&8&lDIRT VERTICAL GEN BUCKET"
+  unique: "&7&oDirt Vertical Gen Bucket"
+  glowing: true
+  price-per-use: 200
+  lore:
+  - "&7 "
+  - "&7&oDirt Vertical Gen Bucket"
+  - "&7 "
+  - "&7&lDIRECTION: &4&lVERTICAL"
+  - "&7 "
+  - "&bThis bucket will generate from"
+  - "&bthe top down &f&o(starting at 255)"
+  - "&7 "
+  - "&ePrice / Use = &c&l$200"
+  #
+  in-gui: true
+  gui-slot: 16
+#

@@ -2,17 +2,35 @@ package com.nbdsteve.vbuckets;
 
 import com.nbdsteve.vbuckets.command.BucketCommand;
 import com.nbdsteve.vbuckets.event.InteractEvent;
+import com.nbdsteve.vbuckets.event.gui.GuiClick;
 import com.nbdsteve.vbuckets.file.LoadProvidedFiles;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
+import java.util.UUID;
+
+/**
+ * Core class for the vBuckets plugin
+ */
 public final class vBuckets extends JavaPlugin {
     //Economy variable for the plugin
     private static Economy econ;
     //New LoadProvidedFiles instance
     private LoadProvidedFiles lpf;
+    //Gui cooldown so that players don't spam
+    private HashMap<UUID, Long> GuiCDT = new HashMap<>();
+
+    /**
+     * Get the servers economy
+     *
+     * @return econ
+     */
+    public static Economy getEconomy() {
+        return econ;
+    }
 
     /**
      * Method called when the plugin starts, register all events and commands in this method
@@ -28,6 +46,7 @@ public final class vBuckets extends JavaPlugin {
         getCommand("vb").setExecutor(new BucketCommand(this));
         getCommand("gen").setExecutor(new BucketCommand(this));
         getServer().getPluginManager().registerEvents(new InteractEvent(), this);
+        getServer().getPluginManager().registerEvents(new GuiClick(), this);
     }
 
     /**
@@ -43,7 +62,8 @@ public final class vBuckets extends JavaPlugin {
         if (Bukkit.getPluginManager().getPlugin("Vault") == null) {
             return false;
         }
-        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        RegisteredServiceProvider<Economy> rsp =
+                getServer().getServicesManager().getRegistration(Economy.class);
         if (rsp == null) {
             return false;
         }
@@ -60,12 +80,7 @@ public final class vBuckets extends JavaPlugin {
         return lpf;
     }
 
-    /**
-     * Get the servers economy
-     *
-     * @return econ
-     */
-    public static Economy getEconomy() {
-        return econ;
+    public HashMap<UUID, Long> getGuiCDT() {
+        return GuiCDT;
     }
 }
