@@ -10,10 +10,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
@@ -68,6 +71,7 @@ public class InteractEvent implements Listener {
                     if (bucketType == null) {
                         return;
                     }
+                    e.setCancelled(true);
                     boolean wg = false;
                     boolean fac = false;
                     //Figure out which plugins are being used and what to support
@@ -133,26 +137,70 @@ public class InteractEvent implements Listener {
                             }
                         }
                         //Runnable to do the block generation
-                        new BukkitRunnable() {
-                            int index = 0;
+                        if (lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("sand") ||
+                                lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("gravel")) {
+                            new BukkitRunnable() {
+                                int index = 0;
 
-                            @Override
-                            public void run() {
-                                if (index < blocks.size()) {
-                                    //If the block isn't air then stop generating, do this check twice
-                                    if (blocks.get(index).getType().equals(Material.AIR)) {
-                                        blocks.get(index).setType(Material.valueOf(lpf.getBuckets().getString(bt + ".type").toUpperCase()));
-                                        index++;
+                                @Override
+                                public void run() {
+                                    if (index < blocks.size()) {
+                                        if (blocks.get(0).getType().equals(Material.AIR)) {
+                                            blocks.get(0).setType(Material.valueOf(lpf.getBuckets().getString(bt + ".type").toUpperCase()));
+                                            index++;
+                                        } else {
+                                            this.cancel();
+                                        }
                                     } else {
-                                        //If the block isn't air cancel the task
-                                        cancel();
+                                        this.cancel();
                                     }
-                                } else {
-                                    //When the generation is scheduled to finish, cancel the task
-                                    cancel();
                                 }
-                            }
-                        }.runTaskTimer(pl, 0L, lpf.getConfig().getInt("delay"));
+                            }.runTaskTimer(pl, 0L, 20L);
+                        } else if (lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("mixed")) {
+                            new BukkitRunnable() {
+                                int index = 0;
+
+                                @Override
+                                public void run() {
+                                    int random = (int)(Math.random() * 2 + 1);
+                                    if (index < blocks.size()) {
+                                        if (blocks.get(0).getType().equals(Material.AIR)) {
+                                            if (random == 1) {
+                                                blocks.get(0).setType(Material.SAND);
+                                            } else if (random == 2) {
+                                                blocks.get(0).setType(Material.GRAVEL);
+                                            }
+                                            index++;
+                                        } else {
+                                            this.cancel();
+                                        }
+                                    } else {
+                                        this.cancel();
+                                    }
+                                }
+                            }.runTaskTimer(pl, 0L, 20L);
+                        } else {
+                            new BukkitRunnable() {
+                                int index = 0;
+
+                                @Override
+                                public void run() {
+                                    if (index < blocks.size()) {
+                                        //If the block isn't air then stop generating, do this check twice
+                                        if (blocks.get(index).getType().equals(Material.AIR)) {
+                                            blocks.get(index).setType(Material.valueOf(lpf.getBuckets().getString(bt + ".type").toUpperCase()));
+                                            index++;
+                                        } else {
+                                            //If the block isn't air cancel the task
+                                            this.cancel();
+                                        }
+                                    } else {
+                                        //When the generation is scheduled to finish, cancel the task
+                                        this.cancel();
+                                    }
+                                }
+                            }.runTaskTimer(pl, 0L, lpf.getConfig().getInt("delay"));
+                        }
                         //Withdraw the money from the players account
                         if (blocks.size() > 0) {
                             for (String line : lpf.getMessages().getStringList("bucket-use")) {

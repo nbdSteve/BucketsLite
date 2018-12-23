@@ -38,7 +38,7 @@ bucket-2:
   type: obsidian
   direction: vertical
   generation-start-height: 255
-  item: bucket
+  item: obsidian
   name: "&5&lOBSIDIAN VERTICAL GEN BUCKET"
   unique: "&d&oObsidian Vertical Gen Bucket"
   glowing: true
@@ -113,7 +113,7 @@ bucket-5:
   type: cobblestone
   direction: vertical
   generation-start-height: 255
-  item: bucket
+  item: blaze_rod
   name: "&7&lCOBBLE VERTICAL GEN BUCKET"
   unique: "&f&oCobblestone Vertical Gen Bucket"
   glowing: true
@@ -135,24 +135,24 @@ bucket-5:
 
 #
 bucket-6:
-  type: sand
+  type: mixed
   direction: vertical
   generation-start-height: 255
-  item: bucket
-  name: "&8&lDIRT VERTICAL GEN BUCKET"
-  unique: "&7&oDirt Vertical Gen Bucket"
+  item: stick
+  name: "&6&lMIXED VERTICAL GEN BUCKET"
+  unique: "&e&oMixed Vertical Gen Bucket"
   glowing: true
-  price-per-use: 200
+  price-per-use: 1500
   lore:
   - "&7 "
-  - "&7&oDirt Vertical Gen Bucket"
+  - "&e&oMixed Vertical Gen Bucket"
   - "&7 "
   - "&7&lDIRECTION: &4&lVERTICAL"
   - "&7 "
   - "&bThis bucket will generate from"
   - "&bthe top down &f&o(starting at 255)"
   - "&7 "
-  - "&ePrice / Use = &c&l$200"
+  - "&ePrice / Use = &c&l$1500"
   #
   in-gui: true
   gui-slot: 16
