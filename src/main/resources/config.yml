@@ -1,13 +1,10 @@
 #
-# vBuckets config.yml v1.0-BETA
+# vBuckets config.yml v0.1.1-BETA
 # Developed by nbdSteve
 #
 # Plugin Support Discord: https://discord.gg/j6Yj5B8
 # Read My TOS Here: https://goo.gl/mtSuZo
 # Copyright Owner: nbdSteve
-#
-# The delay between each block placement (in ticks).
-delay: 2
 #
 # These are values for the GUI that will be opened with the /vb command.
 gui:
@@ -30,4 +27,4 @@ gui:
   #
   # The amount of time (in seconds) the player will have to wait before they can
   # get another bucket from the GUI.
-  cooldown-per-bucket: 10
+  cooldown-per-bucket: 5

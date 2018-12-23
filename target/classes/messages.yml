@@ -1,5 +1,5 @@
 #
-# vBucket messages.yml v1.0-BETA
+# vBucket messages.yml v0.1.1-BETA
 #
 # Message sent to the player when they run the /vb help command
 # Requires permission: vbucket.help

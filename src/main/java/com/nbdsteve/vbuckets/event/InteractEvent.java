@@ -1,6 +1,7 @@
 package com.nbdsteve.vbuckets.event;
 
 import com.nbdsteve.vbuckets.file.LoadProvidedFiles;
+import com.nbdsteve.vbuckets.methods.BlockGenerators;
 import com.nbdsteve.vbuckets.support.Factions;
 import com.nbdsteve.vbuckets.support.WorldGuard;
 import com.nbdsteve.vbuckets.vBuckets;
@@ -10,17 +11,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
-import org.bukkit.block.data.BlockData;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +32,6 @@ public class InteractEvent implements Listener {
     private LoadProvidedFiles lpf = ((vBuckets) pl).getFiles();
     //Get the server economy
     private Economy econ = vBuckets.getEconomy();
-    //Private variable for the runnable in the loop
-    private int taskid;
 
     /**
      * All code for the interact event is handled in this method
@@ -95,7 +90,7 @@ public class InteractEvent implements Listener {
                         int z = e.getClickedBlock().getZ();
                         //Code for the vertical bucket
                         if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase(
-                                "vertical")) {
+                                "vertical") || lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase("scaffold")) {
                             //Start the generation from this height
                             int y = lpf.getBuckets().getInt(bucketType + ".generation-start-height") - 1;
                             //While the block being replaced is air, add these blocks to be changed
@@ -136,70 +131,28 @@ public class InteractEvent implements Listener {
                                 start++;
                             }
                         }
-                        //Runnable to do the block generation
+                        //Code for generating the actual blocks, this references the methods from the
+                        // BlockGenerators class
+                        //Figure out what kind of bucket it is
                         if (lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("sand") ||
                                 lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("gravel")) {
-                            new BukkitRunnable() {
-                                int index = 0;
-
-                                @Override
-                                public void run() {
-                                    if (index < blocks.size()) {
-                                        if (blocks.get(0).getType().equals(Material.AIR)) {
-                                            blocks.get(0).setType(Material.valueOf(lpf.getBuckets().getString(bt + ".type").toUpperCase()));
-                                            index++;
-                                        } else {
-                                            this.cancel();
-                                        }
-                                    } else {
-                                        this.cancel();
-                                    }
-                                }
-                            }.runTaskTimer(pl, 0L, 20L);
-                        } else if (lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("mixed")) {
-                            new BukkitRunnable() {
-                                int index = 0;
-
-                                @Override
-                                public void run() {
-                                    int random = (int)(Math.random() * 2 + 1);
-                                    if (index < blocks.size()) {
-                                        if (blocks.get(0).getType().equals(Material.AIR)) {
-                                            if (random == 1) {
-                                                blocks.get(0).setType(Material.SAND);
-                                            } else if (random == 2) {
-                                                blocks.get(0).setType(Material.GRAVEL);
-                                            }
-                                            index++;
-                                        } else {
-                                            this.cancel();
-                                        }
-                                    } else {
-                                        this.cancel();
-                                    }
-                                }
-                            }.runTaskTimer(pl, 0L, 20L);
+                            if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase(
+                                    "scaffold")) {
+                                //Generate blocks relevant to that gen style
+                                BlockGenerators.scaffoldGen(bucketType, blocks, pl, lpf);
+                            } else {
+                                BlockGenerators.gravityGen(bucketType, blocks, pl, lpf);
+                            }
+                        } else if (lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("mixed"
+                        )) {
+                            if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase(
+                                    "scaffold")) {
+                                BlockGenerators.scaffoldMixedGen(bucketType, blocks, pl, lpf);
+                            } else {
+                                BlockGenerators.mixedGen(bucketType, blocks, pl, lpf);
+                            }
                         } else {
-                            new BukkitRunnable() {
-                                int index = 0;
-
-                                @Override
-                                public void run() {
-                                    if (index < blocks.size()) {
-                                        //If the block isn't air then stop generating, do this check twice
-                                        if (blocks.get(index).getType().equals(Material.AIR)) {
-                                            blocks.get(index).setType(Material.valueOf(lpf.getBuckets().getString(bt + ".type").toUpperCase()));
-                                            index++;
-                                        } else {
-                                            //If the block isn't air cancel the task
-                                            this.cancel();
-                                        }
-                                    } else {
-                                        //When the generation is scheduled to finish, cancel the task
-                                        this.cancel();
-                                    }
-                                }
-                            }.runTaskTimer(pl, 0L, lpf.getConfig().getInt("delay"));
+                            BlockGenerators.genericGen(bucketType, blocks, pl, lpf);
                         }
                         //Withdraw the money from the players account
                         if (blocks.size() > 0) {

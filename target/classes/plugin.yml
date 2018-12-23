@@ -1,5 +1,5 @@
 name: vBuckets
-version: 1.0-BETA
+version: 0.1.1-BETA
 main: com.nbdsteve.vbuckets.vBuckets
 api-version: 1.13
 commands:

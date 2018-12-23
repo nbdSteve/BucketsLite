@@ -1,5 +1,5 @@
 #
-# vBucket buckets.yml v1.0-BETA
+# vBucket buckets.yml v0.1.1-BETA
 # 54 buckets supported
 #
 # Bucket 1 (Example horizontal gen bucket).
@@ -7,14 +7,36 @@
 # this and fill it in with the variables that you would like to make your own
 # horizontal gen bucket
 bucket-1:
+  #
+  # The block that this bucket will generate
   type: cobblestone
+  #
+  # The direction, can be horizontal, vertical or scaffold
   direction: horizontal
-  item: water_bucket
+  #
+  # Specific to horizontal buckets, how many blocks it will gen
   horizontal-gen-length: 32
+  #
+  # The delay between the blocks being generated (in ticks, 20 ticks = 1 second)
+  delay: 5
+  #
+  # The item that is the gen bucket
+  item: water_bucket
+  #
+  # The item name
   name: "&7&lCOBBLE GEN BUCKET"
+  #
+  # IMPORTANT, this must be unique to this bucket and
+  # this EXACT line must be in the lore section
   unique: "&f&oHorizontal Cobblestone Gen Bucket"
+  #
+  # If the item will appear enchanted
   glowing: true
+  #
+  # Price per placement
   price-per-use: 50
+  #
+  # The item lore, make sure this has the unique line inside it
   lore:
   - "&7 "
   - "&f&oHorizontal Cobblestone Gen Bucket"
@@ -26,7 +48,12 @@ bucket-1:
   - "&7 "
   - "&ePrice / Use = &c&l$50"
   #
+
+  #
+  # If the bucket will appear in the /vb GUI
   in-gui: true
+  #
+  # if true, this is the slot it will appear in
   gui-slot: 10
 #
 
@@ -37,7 +64,10 @@ bucket-1:
 bucket-2:
   type: obsidian
   direction: vertical
+  #
+  # Specific to vertical buckets, this is where it will start the gen
   generation-start-height: 255
+  delay: 5
   item: obsidian
   name: "&5&lOBSIDIAN VERTICAL GEN BUCKET"
   unique: "&d&oObsidian Vertical Gen Bucket"
@@ -62,8 +92,9 @@ bucket-2:
 bucket-3:
   type: obsidian
   direction: horizontal
-  item: lava_bucket
   horizontal-gen-length: 24
+  delay: 5
+  item: lava_bucket
   name: "&5&lOBSIDIAN GEN BUCKET"
   unique: "&d&oHorizontal Obsidian Gen Bucket"
   glowing: true
@@ -87,8 +118,9 @@ bucket-3:
 bucket-4:
   type: dirt
   direction: horizontal
-  item: bucket
   horizontal-gen-length: 64
+  delay: 5
+  item: bucket
   name: "&8&lDIRT GEN BUCKET"
   unique: "&7&oHorizontal Dirt Gen Bucket"
   glowing: true
@@ -113,6 +145,7 @@ bucket-5:
   type: cobblestone
   direction: vertical
   generation-start-height: 255
+  delay: 5
   item: blaze_rod
   name: "&7&lCOBBLE VERTICAL GEN BUCKET"
   unique: "&f&oCobblestone Vertical Gen Bucket"
@@ -136,21 +169,23 @@ bucket-5:
 #
 bucket-6:
   type: mixed
-  direction: vertical
+  direction: scaffold
   generation-start-height: 255
+  delay: 5
   item: stick
-  name: "&6&lMIXED VERTICAL GEN BUCKET"
-  unique: "&e&oMixed Vertical Gen Bucket"
+  name: "&6&lMIXED SCAFFOLD"
+  unique: "&e&oMixed scaffold"
   glowing: true
   price-per-use: 1500
   lore:
   - "&7 "
-  - "&e&oMixed Vertical Gen Bucket"
+  - "&e&oMixed scaffold"
   - "&7 "
-  - "&7&lDIRECTION: &4&lVERTICAL"
+  - "&7&lDIRECTION: &4&lscaffold"
   - "&7 "
-  - "&bThis bucket will generate from"
-  - "&bthe top down &f&o(starting at 255)"
+  - "&bThis bucket will generate a mix of"
+  - "&bsand and gravel from the ground up"
+  - "&bto the top of the world (y 255)"
   - "&7 "
   - "&ePrice / Use = &c&l$1500"
   #
