@@ -1,6 +1,7 @@
 name: vBuckets
-version: 0.1.1-BETA
-main: com.nbdsteve.vbuckets.vBuckets
+version: 0.1.2-BETA
+main: dev.nuer.vbuckets.vBuckets
+author: Nuer
 api-version: 1.13
 commands:
   vb:

@@ -4,131 +4,144 @@
 # Message sent to the player when they run the /vb help command
 # Requires permission: vbucket.help
 help:
-- "&7"
-- "&6&lv&e&lBuckets&7, developed by &b&onbdSteve"
-- "&7 "
-- "&a&lCommands:"
-- "&3/vb&7, &3/gen&7 - will open the gui to get a gen bucket"
-- "&7 "
-- "&3/vb give <player> <bucket number> &7 - gives a player that gen bucket"
-- "&7 "
+  - "&7"
+  - "&6&lv&e&lBuckets&7, developed by &b&onbdSteve"
+  - "&7 "
+  - "&a&lCommands:"
+  - "&3/vb&7, &3/gen&7 - will open the gui to get a gen bucket"
+  - "&7 "
+  - "&3/vb give <player> <bucket number> &7 - gives a player that gen bucket"
+  - "&7 "
 #
 
 #
-# Message sent to the player when they type the /sw reload command.
+# Message sent to the player when they type the /vb reload command.
 # Requires permission: vbucket.reload
 reload:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&a&lSUCCESS!&7 You just reloaded all of the configuration files."
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&a&lSUCCESS!&7 You just reloaded all of the configuration files."
+  - "&7 "
 #
 
 #
 # Message sent to the player when they get a bucket from the GUI menu.
 # Requires permission: vbucket.gui to view the GUI.
 purchase:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&a&lSUCCESS!&7 That bucket has been added to your inventory."
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&a&lSUCCESS!&7 That bucket has been added to your inventory."
+  - "&7 "
 #
 
 #
 # Message sent to the player when they use a gen bucket. Set this to nothing to
 # remove the message. No permission required
 bucket-use:
-- "&c-$%price%"
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&c&l-$%price%&7 has been withdraw from your account."
+  - "&7You placed a total of &e&l%bucketsUsed% &7gen bucket(s)."
+  - "&7 "
+#
+
+#
+start-generation:
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&7Your blocks have started generating blocks at &c&n-$%price%&7 per bucket"
+  - "&7The total cost of generation will be shown after you stop."
+  - "&7 "
 #
 
 #
 # Message sent to the player when they open the GUI with /lw.
 # Requires permission: vbucket.gui to view the GUI.
 open-gui:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&7Searching the universe for the &bvBuckets&7 merchant..."
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&7Searching the universe for the &bvBuckets&7 merchant..."
+  - "&7 "
 #
 
 #
 # Message sent to the player when they type an invalid command.
 # No permission required.
 invalid-command:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&c&lERROR!&7 The command you entered is &b&lINVALID&7 please see &e/vb help&7 for command help."
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&c&lERROR!&7 The command you entered is &b&lINVALID&7 please see &e/vb help&7 for command help."
+  - "&7 "
 #
 
 #
 # Message sent to the player when they type a command and don't have permission.
 # No permission required.
 no-permission:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&c&lERROR!&7 You do not have permission to use that!"
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&c&lERROR!&7 You do not have permission to use that!"
+  - "&7 "
 #
 
 #
 # Message sent to the player if they do not have permission to purchase the tool from the GUI.
 # No permission required.
 no-buy-permission:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&c&lERROR!&7 You do not have permission to purchase that vBucket!"
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&c&lERROR!&7 You do not have permission to purchase that vBucket!"
+  - "&7 "
 #
 
 #
 # Message sent to the player when they type a command and the player is invalid.
 # Command permission required.
 invalid-player:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&c&lERROR!&7 The player who entered is not online."
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&c&lERROR!&7 The player who entered is not online."
+  - "&7 "
 #
 
 #
 # Message sent to the player when they type a command and the amount is invalid.
 # Command permission required.
 invalid-amount:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&c&lERROR!&7 The amount you entered is &b&lINVALID&7, make sure the amount is a positive integer greater than 0."
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&c&lERROR!&7 The amount you entered is &b&lINVALID&7, make sure the amount is a positive integer greater than 0."
+  - "&7 "
 #
 
 #
 # Message sent to the player when they try to give a bucket that doesn't exist
 # Command permission required.
 invalid-bucket:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&c&lERROR!&7 The bucket you tried to give doesn't exist."
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&c&lERROR!&7 The bucket you tried to give doesn't exist."
+  - "&7 "
 #
 
 #
 # Message sent to the player if they do not have enough money.
 # Requires permission: vbucket.gui to view the GUI.
 insufficient-funds:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&c&lERROR!&7 You do not have enough money to us this bucket! You only have &c$%bal%&7 and that bucket costs &c$%cost%&7/use."
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&c&lERROR!&7 You do not have enough money to us this bucket! You only have &c$%bal%&7 and that bucket costs &c$%cost%&7/use."
+  - "&7 "
 #
 
 #
 # Message sent to the player if they try to get a bucket but their inventory is full.
 # Requires permission: vbucket.gui to view the GUI.
 inventory-full:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&c&lERROR!&7 Your inventory is full, free some space to buy the tool."
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&c&lERROR!&7 Your inventory is full, free some space to buy the tool."
+  - "&7 "
 #
 
 #
@@ -136,8 +149,8 @@ inventory-full:
 # this is to stop people from spamming items from the gui
 # No permission required, set this to nothing to remove the message.
 cooldown:
-- "&7 "
-- "&6&lv&e&lBuckets:"
-- "&c&lERROR!&7 You have to &b&l%cooldown%&7 seconds before you can get another bucket."
-- "&7 "
+  - "&7 "
+  - "&6&lv&e&lBuckets:"
+  - "&c&lERROR!&7 You have to &b&l%cooldown%&7 seconds before you can get another bucket."
+  - "&7 "
 #

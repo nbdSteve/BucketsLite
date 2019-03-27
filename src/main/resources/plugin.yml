@@ -1,6 +1,7 @@
 name: vBuckets
 version: ${project.version}
-main: com.nbdsteve.vbuckets.vBuckets
+main: dev.nuer.vbuckets.vBuckets
+author: Nuer
 api-version: 1.13
 commands:
   vb:

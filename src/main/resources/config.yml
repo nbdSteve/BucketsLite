@@ -6,6 +6,8 @@
 # Read My TOS Here: https://goo.gl/mtSuZo
 # Copyright Owner: nbdSteve
 #
+message-delay: 60
+#
 # These are values for the GUI that will be opened with the /vb command.
 gui:
   #
