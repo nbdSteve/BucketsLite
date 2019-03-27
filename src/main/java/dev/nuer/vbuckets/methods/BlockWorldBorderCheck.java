@@ -5,6 +5,9 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+/**
+ * Class contains method to check if a block is inside the world border
+ */
 public class BlockWorldBorderCheck {
 
     /**

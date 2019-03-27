@@ -1,5 +1,5 @@
 #
-# vBucket messages.yml v0.1.1-BETA
+# vBucket messages.yml v0.1.2
 #
 # Message sent to the player when they run the /vb help command
 # Requires permission: vbucket.help
@@ -46,6 +46,8 @@ bucket-use:
 #
 
 #
+# Message sent to the player after they finish using the gen bucket, this will be delayed by the
+# #message-delay: in the config. No permission required
 start-generation:
   - "&7 "
   - "&6&lv&e&lBuckets:"
@@ -55,7 +57,7 @@ start-generation:
 #
 
 #
-# Message sent to the player when they open the GUI with /lw.
+# Message sent to the player when they open the GUI with /vb.
 # Requires permission: vbucket.gui to view the GUI.
 open-gui:
   - "&7 "

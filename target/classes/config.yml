@@ -1,10 +1,13 @@
 #
-# vBuckets config.yml v0.1.1-BETA
+# vBuckets config.yml v0.1.2
 # Developed by nbdSteve
 #
 # Plugin Support Discord: https://discord.gg/j6Yj5B8
 # Read My TOS Here: https://goo.gl/mtSuZo
 # Copyright Owner: nbdSteve
+#
+# The delay (in ticks) for buying updates. This will occur after the player uses their last vbucket
+message-delay: 60
 #
 # These are values for the GUI that will be opened with the /vb command.
 gui:

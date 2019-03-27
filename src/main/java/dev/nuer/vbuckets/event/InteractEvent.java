@@ -182,39 +182,69 @@ public class InteractEvent implements Listener {
         }
     }
 
+    /**
+     * Void method to add the player to the generating hashmap and send a delayed message
+     *
+     * @param player   the player generating
+     * @param genPrice the price for each gen bucket
+     */
     private void updateCooldown(Player player, double genPrice) {
         //Withdraw the money from the players account
         econ.withdrawPlayer(player, genPrice);
         //Increment the total withdrawal amount
         totalBucketCost += genPrice;
+        //If the hashmap contains the player, remove them and update it.
         if (playersUsingBuckets.containsKey(player.getUniqueId())) {
             playersUsingBuckets.remove(player.getUniqueId());
+            //Cancel the existing message task
             playerMessageTask.cancel();
+            //Set the variable to null so it can be used again
             playerMessageTask = null;
         } else {
+            /*
+            If they are not in the map then they have just started generating, send them this
+            message to alert.
+             */
             for (String line : lpf.getMessages().getStringList("start-generation")) {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&',
                         line).replace("%price%", String.valueOf(genPrice)));
             }
         }
+        //Add the player to the hashmap with the delay cooldown
         playersUsingBuckets.put(player.getUniqueId(),
                 System.currentTimeMillis() + (lpf.getConfig().getInt("message-delay") * 10));
+        //Send the delayed message call
         delayedMessage(player, genPrice);
     }
 
+    /**
+     * Send the price message to a player after the specified delay
+     *
+     * @param player the player to send the message to
+     * @param price  the price of each bucket
+     */
     private void delayedMessage(Player player, double price) {
+        //Set our class variable to this
         playerMessageTask = new BukkitRunnable() {
             @Override
             public void run() {
+                //Check to make sure the player is in the map
                 if (playersUsingBuckets.containsKey(player.getUniqueId())) {
+                    /*
+                    See if they have stopped genning by checking cooldown, if they are still
+                    going then their cooldown will be > 0.
+                     */
                     if (playersUsingBuckets.get(player.getUniqueId()) - System.currentTimeMillis() <= 0) {
+                        //Send the message
                         for (String line : lpf.getMessages().getStringList("bucket-use")) {
                             player.sendMessage(ChatColor.translateAlternateColorCodes('&', line)
                                     .replace("%price%", String.valueOf(totalBucketCost))
                                     .replace("%bucketsUsed%",
                                             String.valueOf((int) (totalBucketCost / price))));
                         }
+                        //Reset the class variable for later use
                         resetTotalBucketCost();
+                        //Remove them from the hashmap
                         playersUsingBuckets.remove(player.getUniqueId());
                     }
                 }
@@ -222,28 +252,10 @@ public class InteractEvent implements Listener {
         }.runTaskLater(pl, lpf.getConfig().getInt("message-delay"));
     }
 
+    /**
+     * Can't reference the variable in a runnable, therefore make a method to reset it.
+     */
     private void resetTotalBucketCost() {
         this.totalBucketCost = 0;
     }
 }
-//    private boolean isInsideBorder(Block b, PlayerInteractEvent e, Player p) {
-//        //Get the worldborder
-//        WorldBorder wb = p.getWorld().getWorldBorder();
-//        //Store the blocks location
-//        int blockX = b.getX();
-//        int blockZ = b.getZ();
-//        //Get the actual worldborder size
-//        double size = wb.getSize() / 2;
-//        //Check if the block is inside, return true if it is
-//        if (blockX > 0 && blockX > size - 1) {
-//            return true;
-//        } else if (blockX < 0 && blockX < (size * -1)) {
-//            return true;
-//        } else if (blockZ > 0 && blockZ > size - 1) {
-//            return true;
-//        } else if (blockZ < 0 && blockZ < (size * -1)) {
-//            return true;
-//        }
-//        return false;
-//    }
-//}
