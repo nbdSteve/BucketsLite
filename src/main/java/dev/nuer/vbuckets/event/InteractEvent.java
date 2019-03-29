@@ -3,6 +3,7 @@ package dev.nuer.vbuckets.event;
 import dev.nuer.vbuckets.file.LoadProvidedFiles;
 import dev.nuer.vbuckets.methods.BlockGenerators;
 import dev.nuer.vbuckets.methods.BlockWorldBorderCheck;
+import dev.nuer.vbuckets.methods.CheckPlayerDirection;
 import dev.nuer.vbuckets.support.Factions;
 import dev.nuer.vbuckets.support.WorldGuard;
 import dev.nuer.vbuckets.vBuckets;
@@ -122,25 +123,55 @@ public class InteractEvent implements Listener {
                                 "horizontal")) {
                             //Store the coordinates for the starting block
                             int y = e.getClickedBlock().getY();
-                            int end = x + (lpf.getBuckets().getInt(bucketType + ".horizontal-gen-length"));
-                            int start = x + 1;
+                            //Get the players current direction, for the direction of the gen bucket
+                            double facing = p.getLocation().getYaw();
+                            //Spigot uses -180 - 180 degrees, mod this so its 0 - 360
+                            facing = (facing %= 360) >= 0 ?
+                                    p.getLocation().getYaw() : (p.getLocation().getYaw() + 360);
+                            //Call check position method and instantiate it
+                            CheckPlayerDirection cpd = new CheckPlayerDirection(facing, lpf,
+                                    bucketType, x, z);
+                            //Set the x, z value relative to the gen direction
+                            x = cpd.getBlockX();
+                            z = cpd.getBlockZ();
+                            //Get the generation start point
+                            int startPoint = cpd.getStartPoint();
                             //Check that the block being replaced is air
-                            while (p.getWorld().getBlockAt(start, y, z).getType().equals(Material.AIR) && start < end) {
+                            while (p.getWorld().getBlockAt(x, y, z).getType().equals(Material.AIR)) {
+                                //Moved the loop condition inside to allow for all directions
+                                if ((cpd.negativeX() || cpd.negativeZ())
+                                        && (startPoint < cpd.getEndPoint())) {
+                                    break;
+                                } else if ((cpd.positiveX() || cpd.positiveZ())
+                                        && (startPoint > cpd.getEndPoint())) {
+                                    break;
+                                }
                                 if (wg && !WorldGuard.allowsBreak(p.getWorld().getBlockAt(x, y, z).getLocation())) {
                                     //Do nothing
-                                } else if (fac && !Factions.canBreakBlock(p, p.getWorld().getBlockAt(x, y,
+                                } else if (fac && !Factions.canBreakBlock(p,
+                                        p.getWorld().getBlockAt(x, y,
                                         z))) {
                                     //Do nothing
-                                } else if (BlockWorldBorderCheck.isInsideBorder(p.getWorld().getBlockAt(start,
+                                } else if (BlockWorldBorderCheck.isInsideBorder(p.getWorld().getBlockAt(x,
                                         y, z), e, p)) {
                                     //Do nothing
                                 } else {
                                     //Get the current location in the gen buckets generation and set that
                                     // block
                                     // to the desired type
-                                    blocks.add(p.getWorld().getBlockAt(start, y, z));
+                                    blocks.add(p.getWorld().getBlockAt(x, y, z));
                                 }
-                                start++;
+                                //Conditions for incrementing values - bit clunky but it works
+                                if (cpd.positiveX()) x++;
+                                if (cpd.positiveZ()) z++;
+                                if (cpd.negativeX()) x--;
+                                if (cpd.negativeZ()) z--;
+                                //Condition for end of generation
+                                if (cpd.positiveZ() || cpd.positiveX()) {
+                                    startPoint++;
+                                } else {
+                                    startPoint--;
+                                }
                             }
                         }
                         //Code for generating the actual blocks, this references the methods from the
@@ -155,8 +186,7 @@ public class InteractEvent implements Listener {
                             } else {
                                 BlockGenerators.gravityGen(bucketType, blocks, pl, lpf);
                             }
-                        } else if (lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("mixed"
-                        )) {
+                        } else if (lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("mixed")) {
                             if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase(
                                     "scaffold")) {
                                 BlockGenerators.scaffoldMixedGen(bucketType, blocks, pl, lpf);

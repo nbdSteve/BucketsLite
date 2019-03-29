@@ -43,8 +43,10 @@ public final class vBuckets extends JavaPlugin {
         }
         //Generate all of the provided files for the plugin
         this.lpf = new LoadProvidedFiles();
+        //Register commands for the plugin
         getCommand("vb").setExecutor(new BucketCommand(this));
         getCommand("gen").setExecutor(new BucketCommand(this));
+        //Register events for the plugin
         getServer().getPluginManager().registerEvents(new InteractEvent(), this);
         getServer().getPluginManager().registerEvents(new GuiClick(), this);
     }

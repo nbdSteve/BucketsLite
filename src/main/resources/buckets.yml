@@ -1,5 +1,5 @@
 #
-# vBucket buckets.yml v0.1.2
+# vBucket buckets.yml v0.2.1
 # 54 buckets supported
 #
 # Bucket 1 (Example horizontal gen bucket).
@@ -43,8 +43,8 @@ bucket-1:
   - "&7 "
   - "&7&lDIRECTION: &4&lHORIZONTAL"
   - "&7 "
-  - "&bThis bucket will 32 blocks"
-  - "&btowards the &3&lEAST"
+  - "&bThis bucket will generate 32 blocks"
+  - "&bin the direction &3&lYOU&b are facing."
   - "&7 "
   - "&ePrice / Use = &c&l$50"
   #
@@ -105,8 +105,8 @@ bucket-3:
   - "&7 "
   - "&7&lDIRECTION: &4&lHORIZONTAL"
   - "&7 "
-  - "&bThis bucket will 24 blocks"
-  - "&btowards the &3&lEAST"
+  - "&bThis bucket will generate 24 blocks"
+  - "&bin the direction &3&lYOU&b are facing."
   - "&7 "
   - "&ePrice / Use = &c&l$1500"
   #
@@ -131,8 +131,8 @@ bucket-4:
   - "&7 "
   - "&7&lDIRECTION: &4&lHORIZONTAL"
   - "&7 "
-  - "&bThis bucket will 64 blocks"
-  - "&btowards the &3&lEAST"
+  - "&bThis bucket will generate 64 blocks"
+  - "&bin the direction &3&lYOU&b are facing."
   - "&7 "
   - "&ePrice / Use = &c&l$64"
   #
