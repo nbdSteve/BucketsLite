@@ -1,5 +1,5 @@
 #
-# vBuckets config.yml v0.2.1
+# vBuckets config.yml v0.2.1-[MC-1.13+]
 # Developed by nbdSteve
 #
 # Plugin Support Discord: https://discord.gg/j6Yj5B8
@@ -18,9 +18,9 @@ gui:
   # The size of the GUI (this must be a multiple of 9).
   size: 27
   #
-  # The item that will fill the GUI besides the TrenchTools.
+  # The item that will fill the GUI besides the gen buckets.
   # Use this format: ITEM_NAME-DATA_VALUE
-  fill-item: stained_glass_pane-15
+  fill-item: gray_stained_glass_pane-1
   #
   # The amount of the fill item that is displayed.
   fill-item-amount: 1
