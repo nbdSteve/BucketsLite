@@ -6,7 +6,7 @@
 
     <groupId>dev.nuer</groupId>
     <artifactId>vBuckets</artifactId>
-    <version>0.2.1</version>
+    <version>0.2.1-[MC-1.13+]</version>
     <packaging>jar</packaging>
 
     <name>vBuckets</name>
@@ -61,6 +61,10 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>sk89q-repo</id>
+            <url>http://maven.sk89q.com/repo/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -93,17 +97,21 @@
         </dependency>
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
-            <artifactId>worldguard-bukkit</artifactId>
-            <version>6.2.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/lib/worldguard-bukkit-6.2.2.jar</systemPath>
+            <artifactId>worldguard-core</artifactId>
+            <version>7.0.0-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
-            <version>6.1.9</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/lib/worldedit-bukkit-6.1.9.jar</systemPath>
+            <version>7.0.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sk89q.worldguard</groupId>
+            <artifactId>worldguard-legacy</artifactId>
+            <version>7.0.0-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.milkbowl.vault</groupId>

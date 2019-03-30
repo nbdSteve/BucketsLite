@@ -95,7 +95,6 @@ public class InteractEvent implements Listener {
                         //Store the blocks that are going to be changed by the gen bucket
                         ArrayList<Block> blocks = new ArrayList<>();
                         //Store the bucket type as a final variable
-                        final String bt = bucketType;
                         //Store the initial blocks coordinates
                         int x = e.getClickedBlock().getX();
                         int z = e.getClickedBlock().getZ();
@@ -106,7 +105,7 @@ public class InteractEvent implements Listener {
                             int y = lpf.getBuckets().getInt(bucketType + ".generation-start-height") - 1;
                             //While the block being replaced is air, add these blocks to be changed
                             while (p.getWorld().getBlockAt(x, y, z).getType().equals(Material.AIR) && y > 0) {
-                                if (wg && !WorldGuard.allowsBreak(p.getWorld().getBlockAt(x, y, z).getLocation())) {
+                                if (wg && !WorldGuard.allowsBreak(x, y, z, p)) {
                                     //Do nothing
                                 } else if (fac && !Factions.canBreakBlock(p, p.getWorld().getBlockAt(x, y,
                                         z))) {
@@ -146,11 +145,11 @@ public class InteractEvent implements Listener {
                                         && (startPoint > cpd.getEndPoint())) {
                                     break;
                                 }
-                                if (wg && !WorldGuard.allowsBreak(p.getWorld().getBlockAt(x, y, z).getLocation())) {
+                                if (wg && !WorldGuard.allowsBreak(x, y, z, p)) {
                                     //Do nothing
                                 } else if (fac && !Factions.canBreakBlock(p,
                                         p.getWorld().getBlockAt(x, y,
-                                        z))) {
+                                                z))) {
                                     //Do nothing
                                 } else if (BlockWorldBorderCheck.isInsideBorder(p.getWorld().getBlockAt(x,
                                         y, z), e, p)) {
@@ -186,7 +185,8 @@ public class InteractEvent implements Listener {
                             } else {
                                 BlockGenerators.gravityGen(bucketType, blocks, pl, lpf);
                             }
-                        } else if (lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("mixed")) {
+                        } else if (lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("mixed"
+                        )) {
                             if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase(
                                     "scaffold")) {
                                 BlockGenerators.scaffoldMixedGen(bucketType, blocks, pl, lpf);
