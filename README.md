@@ -12,8 +12,8 @@ More information about the plugin, permissions, and commands please refer to the
 * [EssentialsX](https://www.spigotmc.org/resources/essentialsx.9089/)
 * [Vault](https://www.spigotmc.org/resources/vault.34315/)
 
-### Optional Dependencies
-*(Region support)*
+## Optional Dependencies
+*(Region support)*.
 * [WorldGuard](https://dev.bukkit.org/projects/worldguard)
 * [WorldEdit](https://dev.bukkit.org/projects/worldedit)
 * [SavageFactions](https://www.spigotmc.org/resources/savagefactions-the-ultimate-factions-plugin-1-7-1-13.52891/)
