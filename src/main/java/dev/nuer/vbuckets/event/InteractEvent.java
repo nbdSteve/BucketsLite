@@ -103,9 +103,9 @@ public class InteractEvent implements Listener {
                         if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase(
                                 "vertical") || lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase("scaffold")) {
                             //Start the generation from this height
-                            int y = lpf.getBuckets().getInt(bucketType + ".generation-start-height") - 1;
+                            int y = e.getClickedBlock().getY() + 1;
                             //While the block being replaced is air, add these blocks to be changed
-                            while (p.getWorld().getBlockAt(x, y, z).getType().equals(Material.AIR) && y > 0) {
+                            while (p.getWorld().getBlockAt(x, y, z).getType().equals(Material.AIR) && y < lpf.getBuckets().getInt(bucketType + ".generation-finish-height")) {
                                 if (wg && !WorldGuard.allowsBreak(p.getWorld().getBlockAt(x, y, z).getLocation())) {
                                     //Do nothing
                                 } else if (fac && !Factions.canBreakBlock(p, p.getWorld().getBlockAt(x, y,
@@ -117,7 +117,7 @@ public class InteractEvent implements Listener {
                                 } else {
                                     blocks.add(p.getWorld().getBlockAt(x, y, z));
                                 }
-                                y--;
+                                y++;
                             }
                         } else if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase(
                                 "horizontal")) {
@@ -177,8 +177,7 @@ public class InteractEvent implements Listener {
                         //Code for generating the actual blocks, this references the methods from the
                         // BlockGenerators class
                         //Figure out what kind of bucket it is
-                        if (lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("sand") ||
-                                lpf.getBuckets().getString(bucketType + ".type").equalsIgnoreCase("gravel")) {
+                        if (lpf.getBuckets().getBoolean(bucketType + ".generates-gravity-blocks")) {
                             if (lpf.getBuckets().getString(bucketType + ".direction").equalsIgnoreCase(
                                     "scaffold")) {
                                 //Generate blocks relevant to that gen style
@@ -269,8 +268,7 @@ public class InteractEvent implements Listener {
                         for (String line : lpf.getMessages().getStringList("bucket-use")) {
                             player.sendMessage(ChatColor.translateAlternateColorCodes('&', line)
                                     .replace("%price%", String.valueOf(totalBucketCost))
-                                    .replace("%bucketsUsed%",
-                                            String.valueOf((int) (totalBucketCost / price))));
+                                    .replace("%bucketsUsed%", String.valueOf((int) (totalBucketCost / price))));
                         }
                         //Reset the class variable for later use
                         resetTotalBucketCost();

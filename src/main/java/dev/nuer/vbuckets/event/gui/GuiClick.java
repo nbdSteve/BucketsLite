@@ -81,16 +81,15 @@ public class GuiClick implements Listener {
                             //Check to see if the player is currently on cooldown
                             if (CDT != -1 && CDT >= 0) {
                                 if (GuiCDT.containsKey(p.getUniqueId())) {
-                                    long cooldown =
-                                            ((GuiCDT.get(p.getUniqueId()) / 1000) + CDT) - (System.currentTimeMillis() / 1000);
+                                    long cooldown = ((GuiCDT.get(p.getUniqueId()) / 1000) + CDT) - (System.currentTimeMillis() / 1000);
                                     if (cooldown > 0) {
                                         for (String line : lpf.getMessages().getStringList("cooldown")) {
                                             p.sendMessage(ChatColor.translateAlternateColorCodes('&', line).replace("%cooldown%", String.valueOf(cooldown)));
                                         }
+                                        return;
                                     } else {
                                         GuiCDT.remove(p.getUniqueId());
                                     }
-                                    return;
                                 } else {
                                     GuiCDT.put(p.getUniqueId(), System.currentTimeMillis());
                                 }

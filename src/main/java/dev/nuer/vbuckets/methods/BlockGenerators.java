@@ -1,13 +1,8 @@
 package dev.nuer.vbuckets.methods;
 
-import com.sk89q.worldedit.blocks.BlockData;
 import dev.nuer.vbuckets.file.LoadProvidedFiles;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.MaterialData;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -33,7 +28,7 @@ public class BlockGenerators {
 
             @Override
             public void run() {
-                if (index < blocksToChange.size()) {
+                if (index <= blocksToChange.size()) {
                     //If the block isn't air then stop generating, do this check twice
                     if (blocksToChange.get(index).getType().equals(Material.AIR)) {
                         blocksToChange.get(index).setType(Material.valueOf(lpf.getBuckets().getString(bucketType + ".type").toUpperCase()));
@@ -126,11 +121,11 @@ public class BlockGenerators {
     public static void scaffoldMixedGen(String bucketType, ArrayList<Block> blocksToChange, Plugin pl,
                                         LoadProvidedFiles lpf) {
         new BukkitRunnable() {
-            int index = blocksToChange.size() - 1;
+            int index = 0;
 
             @Override
             public void run() {
-                if (index >= 0) {
+                if (index < blocksToChange.size()) {
                     int random = (int) (Math.random() * 2 + 1);
                     //If the block isn't air then stop generating, do this check twice
                     if (blocksToChange.get(index).getType().equals(Material.AIR)) {
@@ -139,7 +134,7 @@ public class BlockGenerators {
                         } else if (random == 2) {
                             blocksToChange.get(index).setType(Material.GRAVEL);
                         }
-                        index--;
+                        index++;
                     } else {
                         //If the block isn't air cancel the task
                         this.cancel();

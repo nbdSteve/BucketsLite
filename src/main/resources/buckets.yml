@@ -1,5 +1,5 @@
 #
-# vBucket buckets.yml v0.2.1
+# vBucket buckets.yml v0.2.3
 # 54 buckets supported
 #
 # Bucket 1 (Example horizontal gen bucket).
@@ -21,32 +21,30 @@ bucket-1:
   delay: 5
   #
   # The item that is the gen bucket
-  item: water_bucket
+  item: bucket
   #
   # The item name
-  name: "&7&lCOBBLE GEN BUCKET"
+  name: "&7Cobblestone Gen Bucket &o(Horizontal)"
   #
   # IMPORTANT, this must be unique to this bucket and
   # this EXACT line must be in the lore section
   unique: "&f&oHorizontal Cobblestone Gen Bucket"
   #
   # If the item will appear enchanted
-  glowing: true
+  glowing: false
   #
   # Price per placement
-  price-per-use: 50
+  price-per-use: 100
   #
   # The item lore, make sure this has the unique line inside it
   lore:
-  - "&7 "
-  - "&f&oHorizontal Cobblestone Gen Bucket"
-  - "&7 "
-  - "&7&lDIRECTION: &4&lHORIZONTAL"
-  - "&7 "
-  - "&bThis bucket will generate 32 blocks"
-  - "&bin the direction &3&lYOU&b are facing."
-  - "&7 "
-  - "&ePrice / Use = &c&l$50"
+    - "&7 "
+    - "&f&oHorizontal Cobblestone Gen Bucket"
+    - "&7 "
+    - "&7This bucket will 32 blocks"
+    - "&7towards the &3&lEAST"
+    - "&7 "
+    - "&ePrice / Use &7= &c&l$100"
   #
 
   #
@@ -54,7 +52,7 @@ bucket-1:
   in-gui: true
   #
   # if true, this is the slot it will appear in
-  gui-slot: 10
+  gui-slot: 1
 #
 
 # Bucket 2 (Example vertical gen bucket).
@@ -66,26 +64,24 @@ bucket-2:
   direction: vertical
   #
   # Specific to vertical buckets, this is where it will start the gen
-  generation-start-height: 255
+  generation-finish-height: 255
   delay: 5
-  item: obsidian
-  name: "&5&lOBSIDIAN VERTICAL GEN BUCKET"
-  unique: "&d&oObsidian Vertical Gen Bucket"
-  glowing: true
-  price-per-use: 5000
+  item: bucket
+  name: "&7Obsidian Gen Bucket &o(Vertical)"
+  unique: "&f&oVertical Obsidian Gen Bucket"
+  glowing: false
+  price-per-use: 2500
   lore:
-  - "&7 "
-  - "&d&oObsidian Vertical Gen Bucket"
-  - "&7 "
-  - "&7&lDIRECTION: &4&lVERTICAL"
-  - "&7 "
-  - "&bThis bucket will generate from"
-  - "&bthe top down &f&o(starting at 255)"
-  - "&7 "
-  - "&ePrice / Use = &c&l$5000"
+    - "&7 "
+    - "&f&oVertical Obsidian Gen Bucket"
+    - "&7 "
+    - "&7This bucket will generate from"
+    - "&7the top down &f&o(starting at 255)"
+    - "&7 "
+    - "&ePrice / Use &7= &c&l$2500"
   #
   in-gui: true
-  gui-slot: 14
+  gui-slot: 5
 #
 
 #
@@ -94,24 +90,22 @@ bucket-3:
   direction: horizontal
   horizontal-gen-length: 24
   delay: 5
-  item: lava_bucket
-  name: "&5&lOBSIDIAN GEN BUCKET"
-  unique: "&d&oHorizontal Obsidian Gen Bucket"
-  glowing: true
-  price-per-use: 1500
+  item: bucket
+  name: "&7Obsidian Gen Bucket &o(Horizontal)"
+  unique: "&f&oHorizontal Obsidian Gen Bucket"
+  glowing: false
+  price-per-use: 900
   lore:
-  - "&7 "
-  - "&d&oHorizontal Obsidian Gen Bucket"
-  - "&7 "
-  - "&7&lDIRECTION: &4&lHORIZONTAL"
-  - "&7 "
-  - "&bThis bucket will generate 24 blocks"
-  - "&bin the direction &3&lYOU&b are facing."
-  - "&7 "
-  - "&ePrice / Use = &c&l$1500"
+    - "&7 "
+    - "&f&oHorizontal Obsidian Gen Bucket"
+    - "&7 "
+    - "&7This bucket will 24 blocks"
+    - "&7towards the &3&lEAST"
+    - "&7 "
+    - "&ePrice / Use &7= &c&l$900"
   #
   in-gui: true
-  gui-slot: 11
+  gui-slot: 2
 #
 
 #
@@ -121,74 +115,68 @@ bucket-4:
   horizontal-gen-length: 64
   delay: 5
   item: bucket
-  name: "&8&lDIRT GEN BUCKET"
-  unique: "&7&oHorizontal Dirt Gen Bucket"
-  glowing: true
-  price-per-use: 64
+  name: "&7Dirt Gen Bucket &o(Horizontal)"
+  unique: "&f&oHorizontal Dirt Gen Bucket"
+  glowing: false
+  price-per-use: 150
   lore:
-  - "&7 "
-  - "&7&oHorizontal Dirt Gen Bucket"
-  - "&7 "
-  - "&7&lDIRECTION: &4&lHORIZONTAL"
-  - "&7 "
-  - "&bThis bucket will generate 64 blocks"
-  - "&bin the direction &3&lYOU&b are facing."
-  - "&7 "
-  - "&ePrice / Use = &c&l$64"
+    - "&7 "
+    - "&f&oHorizontal Dirt Gen Bucket"
+    - "&7 "
+    - "&7This bucket will 64 blocks"
+    - "&7towards the &3&lEAST"
+    - "&7 "
+    - "&ePrice / Use &7= &c&l$150"
   #
   in-gui: true
-  gui-slot: 12
+  gui-slot: 3
 #
 
 #
 bucket-5:
   type: cobblestone
   direction: vertical
-  generation-start-height: 255
+  generation-finish-height: 255
   delay: 5
-  item: blaze_rod
-  name: "&7&lCOBBLE VERTICAL GEN BUCKET"
-  unique: "&f&oCobblestone Vertical Gen Bucket"
-  glowing: true
+  item: bucket
+  name: "&7Cobblestone Gen Bucket &o(Vertical)"
+  unique: "&f&oVertical Cobblestone Gen Bucket"
+  glowing: false
   price-per-use: 300
   lore:
-  - "&7 "
-  - "&f&oCobblestone Vertical Gen Bucket"
-  - "&7 "
-  - "&7&lDIRECTION: &4&lVERTICAL"
-  - "&7 "
-  - "&bThis bucket will generate from"
-  - "&bthe top down &f&o(starting at 255)"
-  - "&7 "
-  - "&ePrice / Use = &c&l$300"
+    - "&7 "
+    - "&f&oVertical Cobblestone Gen Bucket"
+    - "&7 "
+    - "&7This bucket will generate from"
+    - "&7the top down &f&o(starting at 255)"
+    - "&7 "
+    - "&ePrice / Use &7= &c&l$300"
   #
   in-gui: true
-  gui-slot: 15
+  gui-slot: 6
 #
 
 #
 bucket-6:
   type: mixed
   direction: scaffold
-  generation-start-height: 255
+  generation-finish-height: 255
   delay: 5
-  item: stick
-  name: "&6&lMIXED SCAFFOLD"
-  unique: "&e&oMixed scaffold"
-  glowing: true
-  price-per-use: 1500
+  item: bucket
+  name: "&7Sand x Gravel Gen Bucket (Scaffold)"
+  unique: "&f&oScaffold Sand x Gravel Gen Bucket"
+  glowing: false
+  price-per-use: 1250
   lore:
-  - "&7 "
-  - "&e&oMixed scaffold"
-  - "&7 "
-  - "&7&lDIRECTION: &4&lscaffold"
-  - "&7 "
-  - "&bThis bucket will generate a mix of"
-  - "&bsand and gravel from the ground up"
-  - "&bto the top of the world (y 255)"
-  - "&7 "
-  - "&ePrice / Use = &c&l$1500"
+    - "&7 "
+    - "&f&oScaffold Sand x Gravel Gen Bucket"
+    - "&7 "
+    - "&7This bucket will generate a mix of"
+    - "&7sand and gravel from the ground up"
+    - "&7to the top of the world &f&o(y 255)"
+    - "&7 "
+    - "&ePrice / Use &7= &c&l$1250"
   #
   in-gui: true
-  gui-slot: 16
+  gui-slot: 7
 #

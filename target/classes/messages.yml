@@ -1,8 +1,9 @@
 #
-# vBucket messages.yml v0.2.1
+# vBucket messages.yml v0.2.3
 #
 # Message sent to the player when they run the /vb help command
 # Requires permission: vbucket.help
+#
 help:
   - "&7"
   - "&6&lv&e&lBuckets&7, developed by &b&onbdSteve"
@@ -15,11 +16,11 @@ help:
 #
 
 #
-# Message sent to the player when they type the /vb reload command.
+# Message sent to the player when they type the /sw reload command.
 # Requires permission: vbucket.reload
 reload:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
+  - "&6&lv&e&lBuckets &b»"
   - "&a&lSUCCESS!&7 You just reloaded all of the configuration files."
   - "&7 "
 #
@@ -28,10 +29,7 @@ reload:
 # Message sent to the player when they get a bucket from the GUI menu.
 # Requires permission: vbucket.gui to view the GUI.
 purchase:
-  - "&7 "
-  - "&6&lv&e&lBuckets:"
-  - "&a&lSUCCESS!&7 That bucket has been added to your inventory."
-  - "&7 "
+  - "&6&lGen &b» &7That bucket has been added to your inventory."
 #
 
 #
@@ -39,7 +37,7 @@ purchase:
 # remove the message. No permission required
 bucket-use:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
+  - "&6&lGen &b»"
   - "&c&l-$%price%&7 has been withdraw from your account."
   - "&7You placed a total of &e&l%bucketsUsed% &7gen bucket(s)."
   - "&7 "
@@ -50,8 +48,8 @@ bucket-use:
 # #message-delay: in the config. No permission required
 start-generation:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
-  - "&7Your blocks have started generating blocks at &c&n-$%price%&7 per bucket"
+  - "&6&lGen &b»"
+  - "&7You have started generating blocks costing &c&n-$%price%&7 per bucket"
   - "&7The total cost of generation will be shown after you stop."
   - "&7 "
 #
@@ -61,8 +59,8 @@ start-generation:
 # Requires permission: vbucket.gui to view the GUI.
 open-gui:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
-  - "&7Searching the universe for the &bvBuckets&7 merchant..."
+  - "&6&lGen &b»"
+  - "&7Searching the galaxy for the &7Gen Buckets&7 merchant..."
   - "&7 "
 #
 
@@ -71,8 +69,8 @@ open-gui:
 # No permission required.
 invalid-command:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
-  - "&c&lERROR!&7 The command you entered is &b&lINVALID&7 please see &e/vb help&7 for command help."
+  - "&6&lGen &b»"
+  - "&c&lERROR!&7 The command you entered is &b&lINVALID&7 please see &e/gen help&7 for command help."
   - "&7 "
 #
 
@@ -81,7 +79,7 @@ invalid-command:
 # No permission required.
 no-permission:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
+  - "&6&lGen &b»"
   - "&c&lERROR!&7 You do not have permission to use that!"
   - "&7 "
 #
@@ -91,8 +89,8 @@ no-permission:
 # No permission required.
 no-buy-permission:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
-  - "&c&lERROR!&7 You do not have permission to purchase that vBucket!"
+  - "&6&lGen &b»"
+  - "&c&lERROR!&7 You do not have permission to purchase that gen bucket!"
   - "&7 "
 #
 
@@ -101,7 +99,7 @@ no-buy-permission:
 # Command permission required.
 invalid-player:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
+  - "&6&lv&e&lBuckets &b»"
   - "&c&lERROR!&7 The player who entered is not online."
   - "&7 "
 #
@@ -111,7 +109,7 @@ invalid-player:
 # Command permission required.
 invalid-amount:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
+  - "&6&lGen &b»"
   - "&c&lERROR!&7 The amount you entered is &b&lINVALID&7, make sure the amount is a positive integer greater than 0."
   - "&7 "
 #
@@ -121,7 +119,7 @@ invalid-amount:
 # Command permission required.
 invalid-bucket:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
+  - "&6&lGen &b»"
   - "&c&lERROR!&7 The bucket you tried to give doesn't exist."
   - "&7 "
 #
@@ -131,7 +129,7 @@ invalid-bucket:
 # Requires permission: vbucket.gui to view the GUI.
 insufficient-funds:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
+  - "&6&lGen &b»"
   - "&c&lERROR!&7 You do not have enough money to us this bucket! You only have &c$%bal%&7 and that bucket costs &c$%cost%&7/use."
   - "&7 "
 #
@@ -141,8 +139,8 @@ insufficient-funds:
 # Requires permission: vbucket.gui to view the GUI.
 inventory-full:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
-  - "&c&lERROR!&7 Your inventory is full, free some space to buy the tool."
+  - "&6&lGen &b»"
+  - "&c&lERROR!&7 Your inventory is full, free some space to buy that bucket."
   - "&7 "
 #
 
@@ -152,7 +150,7 @@ inventory-full:
 # No permission required, set this to nothing to remove the message.
 cooldown:
   - "&7 "
-  - "&6&lv&e&lBuckets:"
-  - "&c&lERROR!&7 You have to &b&l%cooldown%&7 seconds before you can get another bucket."
+  - "&6&lGen &b»"
+  - "&c&lERROR!&7 You have to wait &b&l%cooldown%&7 seconds before you can get another bucket."
   - "&7 "
 #

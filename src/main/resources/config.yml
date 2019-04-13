@@ -1,5 +1,5 @@
 #
-# vBuckets config.yml v0.2.1
+# vBuckets config.yml v0.2.3
 # Developed by nbdSteve
 #
 # Plugin Support Discord: https://discord.gg/j6Yj5B8
@@ -13,10 +13,10 @@ message-delay: 60
 gui:
   #
   # The name of the GUI.
-  name: "&b&lv&f&lBuckets"
+  name: "&6&lGen Buckets"
   #
   # The size of the GUI (this must be a multiple of 9).
-  size: 27
+  size: 9
   #
   # The item that will fill the GUI besides the TrenchTools.
   # Use this format: ITEM_NAME-DATA_VALUE
