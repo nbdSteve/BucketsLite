@@ -138,7 +138,7 @@ public abstract class AbstractGui {
                             FileManager.get("config").getString("player-gui.page.previous.material"),
                             "player-gui.page.previous", null),
                     player1 -> {
-                        new GenerationPageGui(player, startingSlot-45, startingSlot, buckets, page - 1).open(player);
+                        new GenerationPageGui(player, startingSlot-44, startingSlot, buckets, page - 1).open(player);
                     });
         }
         setItemInSlot(49,
@@ -153,7 +153,7 @@ public abstract class AbstractGui {
                         FileManager.get("config").getString("player-gui.page.next.material"),
                 "player-gui.page.next", null),
                 player1 -> {
-            new GenerationPageGui(player, endSlot, endSlot+45, buckets, page + 1).open(player);
+            new GenerationPageGui(player, endSlot, endSlot+44, buckets, page + 1).open(player);
         });
     }
 }
