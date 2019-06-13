@@ -1,156 +1,18 @@
-#
-# vBucket messages.yml v0.2.3
-#
-# Message sent to the player when they run the /vb help command
-# Requires permission: vbucket.help
-#
 help:
-  - "&7"
-  - "&6&lv&e&lBuckets&7, developed by &b&onbdSteve"
-  - "&7 "
-  - "&a&lCommands:"
-  - "&3/vb&7, &3/gen&7 - will open the gui to get a gen bucket"
-  - "&7 "
-  - "&3/vb give <player> <bucket number> &7 - gives a player that gen bucket"
-  - "&7 "
-#
-
-#
-# Message sent to the player when they type the /sw reload command.
-# Requires permission: vbucket.reload
+  - '&6&lBucketsLite&e: &7Commands: &f/b+ help&7, &f/b+ reload&7, &f/b+ give <player> <direction> <material : damage value> <bucket number>&7.'
 reload:
-  - "&7 "
-  - "&6&lv&e&lBuckets &b»"
-  - "&a&lSUCCESS!&7 You just reloaded all of the configuration files."
-  - "&7 "
-#
-
-#
-# Message sent to the player when they get a bucket from the GUI menu.
-# Requires permission: vbucket.gui to view the GUI.
-purchase:
-  - "&6&lGen &b» &7That bucket has been added to your inventory."
-#
-
-#
-# Message sent to the player when they use a gen bucket. Set this to nothing to
-# remove the message. No permission required
-bucket-use:
-  - "&7 "
-  - "&6&lGen &b»"
-  - "&c&l-$%price%&7 has been withdraw from your account."
-  - "&7You placed a total of &e&l%bucketsUsed% &7gen bucket(s)."
-  - "&7 "
-#
-
-#
-# Message sent to the player after they finish using the gen bucket, this will be delayed by the
-# #message-delay: in the config. No permission required
-start-generation:
-  - "&7 "
-  - "&6&lGen &b»"
-  - "&7You have started generating blocks costing &c&n-$%price%&7 per bucket"
-  - "&7The total cost of generation will be shown after you stop."
-  - "&7 "
-#
-
-#
-# Message sent to the player when they open the GUI with /vb.
-# Requires permission: vbucket.gui to view the GUI.
-open-gui:
-  - "&7 "
-  - "&6&lGen &b»"
-  - "&7Searching the galaxy for the &7Gen Buckets&7 merchant..."
-  - "&7 "
-#
-
-#
-# Message sent to the player when they type an invalid command.
-# No permission required.
-invalid-command:
-  - "&7 "
-  - "&6&lGen &b»"
-  - "&c&lERROR!&7 The command you entered is &b&lINVALID&7 please see &e/gen help&7 for command help."
-  - "&7 "
-#
-
-#
-# Message sent to the player when they type a command and don't have permission.
-# No permission required.
+  - '&6&lBucketsLite&e: &7You have reloaded all of the configuration files and internal maps.'
 no-permission:
-  - "&7 "
-  - "&6&lGen &b»"
-  - "&c&lERROR!&7 You do not have permission to use that!"
-  - "&7 "
-#
-
-#
-# Message sent to the player if they do not have permission to purchase the tool from the GUI.
-# No permission required.
-no-buy-permission:
-  - "&7 "
-  - "&6&lGen &b»"
-  - "&c&lERROR!&7 You do not have permission to purchase that gen bucket!"
-  - "&7 "
-#
-
-#
-# Message sent to the player when they type a command and the player is invalid.
-# Command permission required.
-invalid-player:
-  - "&7 "
-  - "&6&lv&e&lBuckets &b»"
-  - "&c&lERROR!&7 The player who entered is not online."
-  - "&7 "
-#
-
-#
-# Message sent to the player when they type a command and the amount is invalid.
-# Command permission required.
-invalid-amount:
-  - "&7 "
-  - "&6&lGen &b»"
-  - "&c&lERROR!&7 The amount you entered is &b&lINVALID&7, make sure the amount is a positive integer greater than 0."
-  - "&7 "
-#
-
-#
-# Message sent to the player when they try to give a bucket that doesn't exist
-# Command permission required.
-invalid-bucket:
-  - "&7 "
-  - "&6&lGen &b»"
-  - "&c&lERROR!&7 The bucket you tried to give doesn't exist."
-  - "&7 "
-#
-
-#
-# Message sent to the player if they do not have enough money.
-# Requires permission: vbucket.gui to view the GUI.
-insufficient-funds:
-  - "&7 "
-  - "&6&lGen &b»"
-  - "&c&lERROR!&7 You do not have enough money to us this bucket! You only have &c$%bal%&7 and that bucket costs &c$%cost%&7/use."
-  - "&7 "
-#
-
-#
-# Message sent to the player if they try to get a bucket but their inventory is full.
-# Requires permission: vbucket.gui to view the GUI.
-inventory-full:
-  - "&7 "
-  - "&6&lGen &b»"
-  - "&c&lERROR!&7 Your inventory is full, free some space to buy that bucket."
-  - "&7 "
-#
-
-#
-# Message sent to the player when they try to get another bucket from the gui,
-# this is to stop people from spamming items from the gui
-# No permission required, set this to nothing to remove the message.
-cooldown:
-  - "&7 "
-  - "&6&lGen &b»"
-  - "&c&lERROR!&7 You have to wait &b&l%cooldown%&7 seconds before you can get another bucket."
-  - "&7 "
-#
+  - '&cError: &7You do not have permission to use that.'
+give:
+  - '&6&lBucketsLite&e: &7You have successfully given &a{player} &7a Gen Bucket.'
+invalid-command:
+  - '&7--= &6&lBucketsLite&e: &fCommand Debug &7=--'
+  - ' - &cError: &7There was a problem with the command you entered, please read the reason.'
+  - ' - &cReason: &e{reason}&7.'
+invalid-configuration:
+  - '&7--= &6&lBucketsLite&e: &fConfiguration Debug &7=--'
+  - ' - &cError: &7There was a problem with the plugins configuration, please read the reason.'
+  - ' - &cReason: &e{reason}&7.'
+admin-place-notification:
+  - '&6&lBucketsLite&e: &c[admin] &a{player} &7has placed a gen bucket at the location: &fx: {x}&7, &fy: {y}&7, &fz: {z}&7.'

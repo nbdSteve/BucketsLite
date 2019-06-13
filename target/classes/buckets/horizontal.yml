@@ -1,0 +1,107 @@
+# General gui configuration for horizontal gen buckets menu gui
+gui:
+  size: 9
+  name: '&6&lHorziontal Buckets'
+  exit-button:
+    slot: 8
+    shown: true
+    name: '&c&lExit'
+    material: barrier:0
+    lore:
+      - '&7 '
+      - '&7&o(left-click this to exit this gui)'
+      - '&7 '
+    enchantments:
+    item-flags:
+    exit-gui-button: true
+
+# Configuration for gen buckets
+1:
+  # This is relevant for the gui, the item is what is given to the player
+  gui:
+    slot: 0
+    shown: true
+    item: bucket:0
+  material: dirt
+  delay: 5
+  generation-length: 64
+  price: 1.21
+  pseudo: false
+  name: '&6Gen Bucket &7(&eHorizontal&7)'
+  lore:
+    - '&7 '
+    - ' &f- &7Material: &cdirt'
+    - ' &f- &7Distance: &c64'
+    - ' &f- &7Price / block: &c$1.21'
+    - ' &f- &7Pseudo: &cfalse'
+    - '&7 '
+  enchantments:
+    - 'lure:1'
+  item-flags:
+    - 'hide_enchants'
+2:
+  gui:
+    slot: 1
+    shown: true
+    item: bucket:0
+  material: cobblestone
+  delay: 5
+  generation-length: 32
+  price: 2.05
+  pseudo: false
+  name: '&6Gen Bucket &7(&eHorizontal&7)'
+  lore:
+    - '&7 '
+    - ' &f- &7Material: &ccobblestone'
+    - ' &f- &7Distance: &c32'
+    - ' &f- &7Price / block: &c$2.05'
+    - ' &f- &7Pseudo: &cfalse'
+    - '&7 '
+  enchantments:
+    - 'lure:1'
+  item-flags:
+    - 'hide_enchants'
+3:
+  gui:
+    slot: 2
+    shown: true
+    item: bucket:0
+  material: obsidian
+  delay: 5
+  generation-length: 16
+  price: 16.74
+  pseudo: false
+  name: '&6Gen Bucket &7(&eHorizontal&7)'
+  lore:
+    - '&7 '
+    - ' &f- &7Material: &cobsidian'
+    - ' &f- &7Distance: &c16'
+    - ' &f- &7Price / block: &c$16.74'
+    - ' &f- &7Pseudo: &cfalse'
+    - '&7 '
+  enchantments:
+    - 'lure:1'
+  item-flags:
+    - 'hide_enchants'
+4:
+  gui:
+    slot: 3
+    shown: true
+    item: bucket:0
+  material: cobblestone
+  delay: 5
+  generation-length: 32
+  price: 8.69
+  pseudo: true
+  name: '&6Gen Bucket &7(&eHorizontal&7)'
+  lore:
+    - '&7 '
+    - ' &f- &7Material: &ccobblestone'
+    - ' &f- &7Distance: &c32'
+    - ' &f- &7Price / block: &c$8.69'
+    - ' &f- &7Pseudo: &ctrue'
+    - '&7 '
+  enchantments:
+    - 'lure:1'
+  item-flags:
+    - 'hide_enchants'

@@ -1,12 +1,13 @@
-name: vBuckets
-version: 0.2.3
-main: dev.nuer.vbuckets.vBuckets
-author: Nuer
+name: BucketsLite
+version: 1.0.1.3
+main: dev.nuer.bl.BucketsLite
 api-version: 1.13
+prefix: BucketsLite
+authors: [Nuer]
+description: An optimised Gen Bucket plugin developed by Nuer.
+website: https://nuer.dev
 commands:
-  vb:
+  buckets-lite:
     usage: /<command>
-    description: Type '/vb help' for command help.
-  gen:
-    usage: /<command>
-    description: Type '/gen help' for command help.
+    description: Main command for BucketsLite, /bl help
+    aliases: [bl, bucketsl, bucketslite, blite, buckets, gen, gen-bucket, gbucket, genb]

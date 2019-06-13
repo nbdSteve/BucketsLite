@@ -1,0 +1,94 @@
+# BucketsLite
+# <3
+# The max number active gen buckets per plaeyr (not implemented)
+max-buckets-per-player: 100
+#
+# The max height blocks can generate at
+max-generation-height: 255
+#
+# Buckets placed at this height will generate downwards
+downwards-gen-height: 236
+#
+# Configuration for the /gen gui
+menu-gui:
+  size: 9
+  name: '&6&lBucketsLite'
+  1:
+    slot: 0
+    name: '&b&lVertical Buckets'
+    material: bucket:0
+    lore:
+      - '&7 '
+      - '&7&o(left-click this to get vertical buckets)'
+      - '&7 '
+    enchantments:
+    item-flags:
+    open-vertical-menu: true
+  2:
+    slot: 1
+    name: '&b&lHorizontal Buckets'
+    material: bucket:0
+    lore:
+      - '&7 '
+      - '&7&o(left-click this to get horizontal buckets)'
+      - '&7 '
+    enchantments:
+    item-flags:
+    open-horizontal-menu: true
+  3:
+    slot: 8
+    name: '&c&lExit'
+    material: barrier:0
+    lore:
+      - '&7 '
+      - '&7&o(left-click this to exit this gui)'
+      - '&7 '
+    enchantments:
+    item-flags:
+    exit-menu-button: true
+#
+# Configuration for the /b+ a command
+player-gui:
+  size: 54
+  name: "&fActive buckets &7| &b#{page}"
+  page:
+    previous:
+      name: '&e&l<- Previous page'
+      material: paper:0
+      lore:
+        - '&7 '
+        - '&7&o(left-click this view the previous page of buckets)'
+        - '&7 '
+      enchantments:
+      item-flags:
+    next:
+      name: '&e&lNext page ->'
+      material: paper:0
+      lore:
+        - '&7 '
+        - '&7&o(left-click this view the next page of buckets)'
+        - '&7 '
+      enchantments:
+      item-flags:
+    exit:
+      name: '&c&lExit'
+      material: barrier:0
+      lore:
+        - '&7 '
+        - '&7&o(left-click this to exit this gui)'
+        - '&7 '
+      enchantments:
+      item-flags:
+  buckets:
+    name: '&b&lActive bucket #{slot}'
+    material: 'bucket:0'
+    lore:
+      - '&7 '
+      - '&7Bucket type: &f{type}'
+      - '&7Bucket material: &f{material}'
+      - '&7Generation id: &f{gen-id}'
+      - '&7Generation paused: &f{gen-paused}'
+      - '&7 '
+      - '&7&o(left-click to pause / un-pause generation)'
+    enchantments:
+    item-flags:
